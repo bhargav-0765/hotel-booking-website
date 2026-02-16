@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - NANDHIINN Hotel</title>
+  <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+      <div class="container">
+          <h1 class="logo">NANDHIINN Hotel</h1>
+          <div class="navbar">
+              <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'rooms' %}">Rooms</a></li>
+                  <li><a href="{% url 'banquet' %}">Banquet Hall</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+  </header>
+
+  <!-- Selected Room Summary -->
+  <section class="selected-room">
+    <h2>Your Selected Room</h2>
+    <div class="room-summary">
+      <div class="room-image">
+        <img src="{{ room.image.url }}" alt="{{ room.title }}">
+      </div>
+      <div class="room-details">
+        <h3>{{ room.title }}</h3>
+        <p>{{ room.description }}</p>
+        <ul>
+          <li><strong>Check-in:</strong> {{ check_in_date }} {{ check_in_time }}</li>
+          <li><strong>Check-out:</strong> {{ check_out_date }} {{ check_out_time }}</li>
+          <li><strong>Adults:</strong> {{ adults }}</li>
+          <li><strong>Children:</strong> {{ children }}</li>
+          <li><strong>No. of Rooms:</strong> {{ rooms_count }}</li>
+          <li><strong>No. of Days:</strong> {{ no_of_days }}</li>
+        </ul>
+        <div class="pricing">
+          <p>Subtotal: ₹{{ subtotal }}</p>
+          <p>Tax (12%): ₹{{ tax }}</p>
+          <p><strong>Total: ₹{{ total }}</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Billing Information Form -->
+  <section class="billing-info">
+    <h2>Billing Information</h2>
+    <form method="post" action="{% url 'payment' %}">
+      //when form submit call goes to payment url then paymentview in views.py
+      {% csrf_token %}
+      
+      <!-- Hidden fields to pass selection and pricing -->
+       // these are thing we got from room.html when user submits form in room.html call goess to checkout view we got all those values we arepasing them again as hidden filds to payment view because it need all detills
+      <input type="hidden" name="room_id" value="{{ room.id }}">
+      <input type="hidden" name="check_in_date" value="{{ check_in_date }}">
+      <input type="hidden" name="check_in_time" value="{{ check_in_time }}">
+      <input type="hidden" name="check_out_date" value="{{ check_out_date }}">
+      <input type="hidden" name="check_out_time" value="{{ check_out_time }}">
+      <input type="hidden" name="adults" value="{{ adults }}">
+      <input type="hidden" name="children" value="{{ children }}">
+      <input type="hidden" name="rooms_count" value="{{ rooms_count }}">
+      <input type="hidden" name="no_of_days" value="{{ no_of_days }}">
+      <input type="hidden" name="subtotal" value="{{ subtotal }}">
+      <input type="hidden" name="tax" value="{{ tax }}">
+      <input type="hidden" name="total" value="{{ total }}">
+
+      <!-- User Details -->
+      <label for="name">Full Name</label>
+      <input type="text" name="name" id="name" required>
+
+      // here label what it does is its display up name like fullname email ND FOR IS USED TO WHEN USER PRESS CURSOR ON LABEL THEN IT GOES TO ID NAMED NAME INPUT FIELD
+      // input is where user enters data name is the name of input field  and id is used to link with label and name is used for passsing to backend views  and required means user must fill this field before submitting form
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="phone">Phone</label>
+      <input type="text" name="phone" id="phone" required>
+
+      <label for="address">Address</label>
+      <input type="text" name="address" id="address" required>
+
+      <label for="city">City</label>
+      <input type="text" name="city" id="city" required>
+
+      <label for="state">State</label>
+      <input type="text" name="state" id="state" required>
+
+      <label for="special_requests">Special Requests</label>
+      <textarea name="special_requests" id="special_requests" rows="3"></textarea>
+
+      <button type="submit" class="btn">Proceed to Payment</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="footer-logo">
+        <h2>NANDHIINN Hotel</h2>
+      </div>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Address</h3>
+          <p>123 Main Street,<br> City Name, State, 123456</p>
+          <p>Phone: +91 98765 43210</p>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NANDHIINN Hotel. All rights reserved.</p>
+      </div>
+  </footer>
+
+</body>
+</html>

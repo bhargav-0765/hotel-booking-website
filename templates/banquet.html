@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banquet Hall - NANDHIINN Hotel</title>
+  <link rel="stylesheet" href="{% static 'css/banquet.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">NANDHIINN Hotel</h1>
+      <div class="navbar">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'rooms' %}">Rooms</a></li>
+          <li><a href="{% url 'banquet' %}" class="active">Banquet Hall</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" style="background-image: url('{% static "images/banquet2.jpg" %}');">
+    <div class="hero-overlay">
+      <h1>Banquet Hall</h1>
+      <p>Celebrate your special occasions with elegance</p>
+    </div>
+  </section>
+
+  <!-- About Banquet Hall -->
+  <section class="banquet-info">
+    <div class="container">
+      <h2>About Our Banquet Hall</h2>
+      <p>
+        The NANDHIINN Hotel Banquet Hall is the perfect venue for weddings, receptions, corporate events, birthday parties, and more. 
+        With elegant interiors, spacious seating, and customizable decorations, we make sure your event is memorable.
+      </p>
+      <ul>
+        <li>Capacity: Up to 350 Guests</li>
+        <li>Air-conditioned & Spacious Interiors</li>
+        <li>In-house Catering & Decoration</li>
+        <li>Stage and Lighting Setup</li>
+        <li>Ample Parking Space</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="banquet-gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-container">
+      <img src="{% static 'images/banquet1.jpg' %}" alt="Banquet Hall 1">
+      <img src="{% static 'images/banquet2.jpg' %}" alt="Banquet Hall 2">
+      <img src="{% static 'images/banquet3.jpg' %}" alt="Banquet Hall 3">
+      <img src="{% static 'images/banquet1.jpg' %}" alt="Banquet Hall 4">
+    </div>
+
+    <!-- Optional Video -->
+    <div class="banquet-video">
+      <h3>Watch Our Hall in Action</h3>
+      <video controls>
+        <source src="{% static 'videos/banquet-tour.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <!-- Pricing & Offers -->
+  <section class="banquet-pricing">
+    <div class="container">
+      <h2>Pricing & Offers</h2>
+      <table class="pricing-table">
+        <tr>
+          <th>Event Type</th>
+          <th>Starting Price</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>Wedding / Reception</td>
+          <td>₹80,000</td>
+          <td>Decoration & Catering separate</td>
+        </tr>
+        <tr>
+          <td>Corporate Event</td>
+          <td>₹40,000</td>
+          <td>Includes projector & sound system</td>
+        </tr>
+        <tr>
+          <td>Birthday / Party</td>
+          <td>₹25,000</td>
+          <td>Special discount for weekdays</td>
+        </tr>
+      </table>
+      <p class="offer-note">💡 Contact us directly for special offers & discounts.</p>
+    </div>
+  </section>
+
+  <!-- Contact for Banquet -->
+  <section class="banquet-contact">
+    <div class="container">
+      <h2>Contact Us for Banquet Bookings</h2>
+      <p>For inquiries, bargaining, and custom offers, please reach us directly:</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Email:</strong> banquet@nandhiinn.com</p>
+      <a href="{% url 'contact' %}" class="btn">Go to Contact Page</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <h2>NANDHIINN Hotel</h2>
+    </div>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Address</h3>
+        <p>123 Main Street,<br> City Name, State, 123456</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NANDHIINN Hotel. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

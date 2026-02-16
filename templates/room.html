@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooms - NANDHIINN Hotel</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/room.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">NANDHIINN Hotel</h1>
+      <div class="navbar">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'rooms' %}">Rooms</a></li>
+          <li><a href="{% url 'banquet' %}">Banquet Hall</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Rooms Grid -->
+  <section class="rooms-page">
+    <h2 class="section-title">Our Rooms</h2>
+    <div class="rooms-container">
+      {% for room in rooms %}
+      <div class="room-card">
+        <div class="room-image">
+          <img src="{% if room.image %}{{ room.image.url }}{% else %}{% static 'images/default-room.jpg' %}{% endif %}" alt="{{ room.title }}">
+          <div class="price-tag">From ₹{{ room.price }} / Night</div>
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i> 5
+          </div>
+        </div>
+        <div class="room-info">
+          <h3>{{ room.title }}</h3>
+          <p>{{ room.description|truncatewords:15 }}</p>
+          <button class="book-btn" data-room="{{ room.slug }}">Book</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Big Selected Room Section -->
+  <div id="bigRoomSection"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo"><h2>NANDHIINN Hotel</h2></div>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Address</h3>
+        <p>123 Main Street,<br> City Name, State, 123456</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NANDHIINN Hotel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Room data from backend
+    const rooms = {};
+    {% for room in rooms %}
+    rooms["{{ room.slug }}"] = {
+      id: "{{ room.id }}",
+      title: "{{ room.title|escapejs }}",
+      desc: "{{ room.description|escapejs }}",
+      price: "{{ room.price }}",
+      img: "{% if room.image %}{{ room.image.url }}{% else %}{% static 'images/default-room.jpg' %}{% endif %}"
+    };
+    {% endfor %}
+
+    // Show Big Room Details
+    function showBigRoom(slug) {
+      const room = rooms[slug];
+      if (!room) return;
+    // Make section visible
+    const section = document.getElementById("bigRoomSection");
+      section.style.display = "flex";
+      section.innerHTML = `
+        <section class="room-details">
+          <div class="room-header">
+            <h2>${room.title}</h2>
+            <p class="room-price">From ₹${room.price} / Night</p>
+          </div>
+          <div class="room-content">
+            <div class="room-image">
+              <img src="${room.img}" alt="${room.title}">
+              <p>${room.desc}</p>
+            </div>
+            <form method="post" action="{% url 'checkout' %}">
+              {% csrf_token %}
+              <input type="hidden" name="room_id" value="${room.id}">
+              <input type="hidden" name="room_type" value="${slug}">
+              <label>Check-in Date</label>
+              <input type="date" name="check_in_date" required>
+              <label>Check-in Time</label>
+              <input type="time" name="check_in_time" required>
+              <label>Check-out Date</label>
+              <input type="date" name="check_out_date" required>
+              <label>Check-out Time</label>
+              <input type="time" name="check_out_time" required>
+              <label>No. of Adults</label>
+              <input type="number" name="adults" min="1" value="2">
+              <label>No. of Children</label>
+              <input type="number" name="children" min="0" value="0">
+              <label>No. of Rooms</label>
+              <input type="number" name="rooms_count" min="1" value="1">
+              <button type="submit" class="btn">Book Room</button>
+            </form>
+          </div>
+        </section>
+      `;
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Attach click event to each room card button
+    document.querySelectorAll('.book-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const slug = btn.getAttribute('data-room');
+        showBigRoom(slug);
+      });
+    });
+  </script>
+
+</body>
+</html>

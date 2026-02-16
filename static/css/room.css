@@ -1,0 +1,291 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playfair Display", serif;
+}
+
+body {
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+.header {
+  background: #222;
+  color: #fff;
+  padding: 15px 0;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #f4c430;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  margin: 30px 0;
+  font-weight: 700;
+}
+
+/* Rooms Grid */
+.rooms-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.room-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 300px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+}
+
+.room-image {
+  position: relative;
+}
+
+.room-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.price-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #f4c430;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.room-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.room-info h3 {
+  margin-bottom: 10px;
+}
+
+.book-btn {
+  background: #f4c430;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.book-btn:hover {
+  background: #e0b020;
+}
+
+/* Big Room Layout */
+#bigRoomSection {
+  display: none; /* Hidden initially */
+  margin-top: 30px;
+}
+
+.room-details {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.room-details.active {
+  display: flex;
+}
+
+.room-header {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.room-header h2 {
+  font-size: 28px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.room-header .room-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d7a977;
+  margin-bottom: 10px;
+}
+
+.room-header .room-amenities i {
+  margin: 0 8px;
+  font-size: 18px;
+  color: #555;
+}
+
+.room-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.room-content .room-image {
+  flex: 2;
+}
+
+.room-content .room-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.room-content .room-image p {
+  font-size: 16px;
+  color: #444;
+}
+
+.room-booking {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.room-booking h3 {
+  margin-bottom: 15px;
+}
+
+.room-booking form {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-booking label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.room-booking input {
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.room-booking button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #d7a977;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.room-booking button:hover {
+  background: #c49b6c;
+}
+
+/* Footer */
+.footer {
+    background: #222;
+    color: #fff;
+    padding: 40px 20px 20px;
+    text-align: center;
+}
+
+.footer-logo h2 {
+    margin-bottom: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+}
+
+.footer-column p {
+    font-size: 14px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 18px;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #f4b400;
+}
+
+.footer-bottom {
+    font-size: 14px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    margin-top: 10px;
+}

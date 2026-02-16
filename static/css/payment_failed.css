@@ -1,0 +1,46 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.container {
+  background: #ffffff;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon.failed {
+  font-size: 50px;
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+
+h1 {
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #dc3545;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #c82333;
+}

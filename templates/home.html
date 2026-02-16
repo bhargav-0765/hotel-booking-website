@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NANDHIINN Hotel</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">NANDHIINN Hotel</h1>
+            <div class="navbar">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'rooms' %}">Rooms</a></li>
+                    <li><a href="{% url 'banquet' %}">Banquet Hall</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full-Screen Slider Section -->
+    <section class="offers-booking">
+        <div class="slider-container">
+            <img src="{% static 'images/entrance.jpg' %}" class="slider-image active" alt="Entrance">
+            <img src="{% static 'images/mainentrance.jpg' %}" class="slider-image" alt="Main Entrance">
+            <img src="{% static 'images/lobby.jpg' %}" class="slider-image" alt="Lobby">
+
+            <!-- Navigation Buttons -->
+            <button class="slider-btn prev">&#10094;</button>
+            <button class="slider-btn next">&#10095;</button>
+
+            <!-- Book Now Button -->
+            <a href="#booking" class="book-now-btn">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Date Picker -->
+    <section class="check-availability" id="booking">
+        <form class="availability-form">
+            <input type="date" id="checkin" placeholder="Check-in" required>
+            <input type="date" id="checkout" placeholder="Check-out" required>
+            <button type="submit" class="btn">Check Availability</button>
+        </form>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <div class="welcome-container">
+            <div class="welcome-image">
+                <img src="{% static 'images/main2.jpg' %}" alt="Hotel Interior">
+            </div>
+            <div class="welcome-text">
+                <h2>Welcome to Nandhiinn Hotel</h2>
+                <p>
+                    At Nandhiinn Hotel, we combine luxury and comfort to make your stay
+                    unforgettable. With elegant rooms, banquet halls, and exceptional dining,
+                    our goal is to give you the best hospitality experience.
+                </p>
+                <a href="{% url 'about' %}" class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms-page">
+        <h2 class="section-title">Our Rooms</h2>
+        <div class="rooms-container">
+            <!-- Room Cards -->
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="{% static 'images/bed.jpg' %}" alt="Standard Room">
+                    <div class="price-tag">From ₹3300 / 1 Night</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i> 5
+                    </div>
+                </div>
+                <div class="room-info">
+                    <div class="room-meta">
+                        <p><i class="fas fa-user"></i> 2 Adults</p>
+                        <p><i class="fas fa-baby"></i> Child</p>
+                        <p><i class="fas fa-door-open"></i> 3 Rooms</p>
+                    </div>
+                    <h3>Standard</h3>
+                    <p>Prestigious and very comfortable suite with an improved layout. Room size is 30 sq.m, with elegant interiors for a cozy stay.</p>
+                    <div class="package-book">
+                        <select>
+                            <option>Base</option>
+                            <option>Deluxe</option>
+                        </select>
+                        <a href="{% url 'rooms' %}?room=standard" class="btn">Book Standard Room</a>
+                    </div>
+                    <div class="room-icons">
+                        <i class="fas fa-tv"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-coffee"></i>
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room Card 2 -->
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="{% static 'images/bed1.jpg' %}" alt="Premium Room">
+                    <div class="price-tag">From ₹3800 / 1 Night</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i> 5
+                    </div>
+                </div>
+                <div class="room-info">
+                    <div class="room-meta">
+                        <p><i class="fas fa-user"></i> 2 Adults</p>
+                        <p><i class="fas fa-baby"></i> Child</p>
+                        <p><i class="fas fa-door-open"></i> 8 Rooms</p>
+                    </div>
+                    <h3>Premium</h3>
+                    <p>Luxurious and stylish suite offering comfort with an upgraded layout. Spacious and elegant with modern amenities.</p>
+                    <div class="package-book">
+                        <select>
+                            <option>Base</option>
+                            <option>Deluxe</option>
+                            <option>Executive</option>
+                        </select>
+                        <a href="{% url 'rooms' %}?room=premium" class="btn">Book Premium Room</a>
+                    </div>
+                    <div class="room-icons">
+                        <i class="fas fa-tv"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-coffee"></i>
+                        <i class="fas fa-bath"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room Card 3 -->
+            <div class="room-card">
+                <div class="room-image">
+                    <img src="{% static 'images/bed2.jpg' %}" alt="Suite Room">
+                    <div class="price-tag">From ₹4800 / 1 Night</div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i> 5
+                    </div>
+                </div>
+                <div class="room-info">
+                    <div class="room-meta">
+                        <p><i class="fas fa-user"></i> 2 Adults</p>
+                        <p><i class="fas fa-baby"></i> Child</p>
+                        <p><i class="fas fa-door-open"></i> 3 Rooms</p>
+                    </div>
+                    <h3>Suite</h3>
+                    <p>Exclusive suite with spacious layout, premium furnishing, and top-tier luxury for a royal experience.</p>
+                    <div class="package-book">
+                        <select>
+                            <option>Base</option>
+                            <option>Deluxe</option>
+                            <option>Executive</option>
+                            <option>Presidential</option>
+                        </select>
+                        <a href="{% url 'rooms' %}?room=suite" class="btn">Book Suite Room</a>
+                    </div>
+                    <div class="room-icons">
+                        <i class="fas fa-tv"></i>
+                        <i class="fas fa-wifi"></i>
+                        <i class="fas fa-utensils"></i>
+                        <i class="fas fa-spa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <h2>NANDHIINN Hotel</h2>
+        </div>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Address</h3>
+                <p>123 Main Street,<br> City Name, State, 123456</p>
+                <p>Phone: +91 98765 43210</p>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Grand Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Slider JS -->
+    <script>
+    const images = document.querySelectorAll('.slider-image');
+    const prevBtn = document.querySelector('.slider-btn.prev');
+    const nextBtn = document.querySelector('.slider-btn.next');
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+        });
+    }
+
+    showImage(currentIndex);
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    });
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }, 5000);
+    </script>
+</body>
+</html>

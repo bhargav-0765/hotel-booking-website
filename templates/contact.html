@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - NANDHIINN Hotel</title>
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">NANDHIINN Hotel</h1>
+      <div class="navbar">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'rooms' %}">Rooms</a></li>
+          <li><a href="{% url 'banquet' %}">Banquet Hall</a></li>
+          <li><a href="{% url 'contact' %}" class="active">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Image -->
+  <section class="hero-contact"  style="background-image: url('{% static "images/lobby.jpg" %}');">
+    <h1>Contact Us</h1>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h5>WAITING FOR YOU!</h5>
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+
+      <!-- Call Us -->
+      <div class="contact-box">
+        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+        <h3>Call Us</h3>
+        <p>+91 85752 47777<br>+91 85753 47777</p>
+        <p><a href="https://wa.me/918575347777" target="_blank"><i class="fab fa-whatsapp"></i> 918575347777</a></p>
+      </div>
+
+      <!-- Write Us -->
+      <div class="contact-box">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <h3>Write Us</h3>
+        <p><a href="mailto:bookings@nandhiinn.com">bookings@nandhiinn.com</a></p>
+      </div>
+
+      <!-- Visit Us -->
+      <div class="contact-box">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h3>Visit Us</h3>
+        <p>
+          Opposite to SRR Temple Parking Entrance, Jagityala Bus Stand,<br>
+          Vemulawada,<br>
+          Dist: Rajanna Sircilla<br>
+          Pin Code: 505302
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=..."
+      width="600" height="450" style="border:0;" allowfullscreen=""
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <h2>NANDHIINN Hotel</h2>
+    </div>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Address</h3>
+        <p>123 Main Street,<br> City Name, State, 123456</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+      <div class="footer-column">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Grand Hotel. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

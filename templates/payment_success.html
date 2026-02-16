@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Successful</title>
+  <link rel="stylesheet" href="{% static 'css/payment_success.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="icon success">✅</div>
+    <h1>Payment Successful!</h1>
+    <p>Thank you for your booking, <strong>{{ booking.name }}</strong>.</p>
+    <p>Your payment has been received successfully.</p>
+
+    <h3>Booking Details</h3>
+    <p><strong>Name:</strong> {{ booking.name }}</p>
+    <p><strong>Email:</strong> {{ booking.email }}</p>
+    <p><strong>Phone:</strong> {{ booking.phone }}</p>
+
+    <h3>Stay Info</h3>
+    <p><strong>Room:</strong> {{ room.title }}</p>
+    <p><strong>Check-in:</strong> {{ booking.check_in_date }} {{ booking.check_in_time }}</p>
+    <p><strong>Check-out:</strong> {{ booking.check_out_date }} {{ booking.check_out_time }}</p>
+    <p><strong>Adults:</strong> {{ booking.adults }}</p>
+    <p><strong>Children:</strong> {{ booking.children }}</p>
+    <p><strong>Rooms:</strong> {{ booking.rooms_count }}</p>
+
+    <h3>Payment</h3>
+    <p><strong>Total Paid:</strong> ₹{{ booking.total }}</p>
+    <p><strong>Status:</strong> {{ booking.payment_status }}</p>
+
+    <a href="{% url 'rooms' %}">Book Another Room</a>
+  </div>
+</body>
+</html>
